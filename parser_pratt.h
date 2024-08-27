@@ -17,6 +17,6 @@ struct cca_parser_pratt {
     struct cca_token *peek_tkn;
 };
 
-struct cca_ast *cca_pp_parse(struct cca_arser_pratt*);
+struct cca_ast *cca_pp_parse(struct cca_parser_pratt*);
 
 #endif
