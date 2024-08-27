@@ -129,10 +129,17 @@ cca_lexer_next(struct cca_lexer *lxr)
             tkn->token_literal.symbol = '(';
             tkn->token_type = TK_LPAR;
             cca_lexer_advance(lxr);
+            break;
         case ')':
             tkn = cca_token_default();
             tkn->token_literal.symbol = ')';
             tkn->token_type = TK_RPAR;
+            cca_lexer_advance(lxr);
+            break;
+        case ';':
+            tkn = cca_token_default();
+            tkn->token_literal.symbol = ';';
+            tkn->token_type = TK_SEMICOLON;
             cca_lexer_advance(lxr);
             break;
         default:
@@ -216,10 +223,6 @@ cca_lexer_free_lex(struct cca_token *tkns)
 {
     if (tkns == NULL)
         return;
-    struct cca_token *tmp = tkns;
-    while (tmp != NULL) {
-        struct cca_token *next = tmp->next;
-        cca_token_free(tmp);
-        tmp = next;
-    }
+
+    cca_token_free(tkns);
 }

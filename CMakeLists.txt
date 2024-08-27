@@ -10,10 +10,12 @@ add_library(cca_lexer
 )
 
 add_library(cca_parser_pratt
+    ast.c           ast.h
     parser_pratt.c  parser_pratt.h
     token.c         token.h
     lexer.c         lexer.h
     util.c          util.h
+    eval.c           eval.c
 )
 
 add_executable(cca 

@@ -26,5 +26,11 @@ cca_token_free(struct cca_token *tkn)
     if (tkn == NULL)
         return;
 
-    free(tkn);
+    struct cca_token *tmp = tkn;
+
+    while (tmp != NULL) {
+        struct cca_token *next = tmp->next;
+        free(tmp);
+        tmp = next;
+    }
 }

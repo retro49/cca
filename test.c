@@ -44,7 +44,7 @@ cca_lexer_lex_test()
 {
 
     struct cca_lexer* lxr = NULL;
-    const char* stream = "1.123 + 123 * 33";
+    const char* stream = "1.123 + 123 * 33 () ;";
 
     lxr = cca_lexer_new((void*)stream, strlen(stream));
     struct cca_token *tkns = cca_lexer_lex(lxr);
@@ -74,6 +74,21 @@ cca_lexer_lex_test()
     assert(tmp != NULL);
     RETEST_ASSERT(tmp->token_type == TK_NUMBER);
     RETEST_ASSERT((strcmp("33", tmp->token_literal.literal) == 0));
+
+    tmp = tmp->next;
+    assert(tmp != NULL);
+    RETEST_ASSERT(tmp->token_type == TK_LPAR);
+    RETEST_ASSERT((strcmp("(", tmp->token_literal.literal) == 0));
+
+    tmp = tmp->next;
+    assert(tmp != NULL);
+    RETEST_ASSERT(tmp->token_type == TK_RPAR);
+    RETEST_ASSERT((strcmp(")", tmp->token_literal.literal) == 0));
+
+    tmp = tmp->next;
+    assert(tmp != NULL);
+    RETEST_ASSERT(tmp->token_type == TK_SEMICOLON);
+    RETEST_ASSERT((strcmp(";", tmp->token_literal.literal) == 0));
 
     tmp = tmp->next;
     assert(tmp != NULL);

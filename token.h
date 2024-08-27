@@ -13,6 +13,7 @@ enum cca_token_types {
     TK_SLASH = '/',
     TK_LPAR = '(',
     TK_RPAR = ')',
+    TK_SEMICOLON = ';',
 
     // for tokens that cannot be represented
     // by a single byte, are added below TK_NUMBER
