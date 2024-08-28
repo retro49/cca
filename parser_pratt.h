@@ -34,6 +34,7 @@ struct cca_parser_pratt* cca_pp_new(struct cca_lexer*);
 struct cca_ast* cca_pp_parse_expression(struct cca_parser_pratt*, enum cca_pp_precedence);
 enum cca_pp_precedence cca_pp_peek_precedence(struct cca_parser_pratt*);
 void cca_pp_next(struct cca_parser_pratt*);
+void cca_pp_free(struct cca_parser_pratt*);
 
 struct cca_ast *cca_pp_parse(struct cca_parser_pratt*);
 

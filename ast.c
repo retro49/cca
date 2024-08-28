@@ -84,6 +84,7 @@ cca_ast_free(struct cca_ast *ast)
 
     struct cca_ast *tmp = ast;
     while (tmp != NULL) {
+        struct cca_ast *next = tmp->next;
         switch (tmp->ast_type) {
             case AST_NUMBER:
                 cca_ast_free_number(tmp->ast.number);
@@ -95,7 +96,7 @@ cca_ast_free(struct cca_ast *ast)
                 cca_ast_free_infix(tmp->ast.infix);
                 break;
         }
-        tmp = tmp->next;
+        free(tmp);
+        tmp = next;
     }
-
 }

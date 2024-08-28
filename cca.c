@@ -49,14 +49,14 @@ void repl()
         if (ast != NULL)
             cca_ast_free(ast);
 
-        if (lxr != NULL)
-            cca_lexer_free(lxr);
-
         if (prsr->_tokens != NULL)
             cca_token_free(prsr->_tokens);
 
+        if (lxr != NULL)
+            cca_lexer_free(lxr);
+
         if (prsr != NULL)
-            free(prsr);
+            cca_pp_free(prsr);
     }
 
 }

@@ -99,7 +99,7 @@ cca_lexer_lex_test()
     assert(tmp == NULL);
 
     if (tkns != NULL)
-        cca_lexer_free_lex(tkns);
+        cca_token_free(tkns);
 }
 
 RETEST_TESTING_START

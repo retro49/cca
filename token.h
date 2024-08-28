@@ -11,6 +11,10 @@ enum cca_token_types {
     TK_MINUS = '-',
     TK_ASTERISK = '*',
     TK_SLASH = '/',
+
+    TK_CARET = '^',
+    TK_MOD = '%',
+
     TK_LPAR = '(',
     TK_RPAR = ')',
     TK_SEMICOLON = ';',

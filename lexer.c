@@ -79,15 +79,6 @@ cca_lexer_peek(struct cca_lexer *lxr)
     return *((char*)lxr->stream + (lxr->pos + 1));
 }
 
-void 
-cca_lexer_free(struct cca_lexer *lxr)
-{
-    if (lxr == NULL)
-        return;
-
-    free(lxr);
-}
-
 struct cca_token* 
 cca_lexer_next(struct cca_lexer *lxr)
 {
@@ -134,6 +125,18 @@ cca_lexer_next(struct cca_lexer *lxr)
             tkn = cca_token_default();
             tkn->token_literal.symbol = ')';
             tkn->token_type = TK_RPAR;
+            cca_lexer_advance(lxr);
+            break;
+        case '^':
+            tkn = cca_token_default();
+            tkn->token_type = TK_CARET;
+            tkn->token_literal.symbol = '^';
+            cca_lexer_advance(lxr);
+            break;
+        case '%':
+            tkn = cca_token_default();
+            tkn->token_type = TK_MOD;
+            tkn->token_literal.symbol = '%';
             cca_lexer_advance(lxr);
             break;
         case ';':
@@ -218,11 +221,11 @@ cca_lexer_lex(struct cca_lexer *lxr)
     return head;
 }
 
-void
-cca_lexer_free_lex(struct cca_token *tkns)
+void 
+cca_lexer_free(struct cca_lexer *lxr)
 {
-    if (tkns == NULL)
+    if (lxr == NULL)
         return;
 
-    cca_token_free(tkns);
+    free(lxr);
 }

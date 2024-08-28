@@ -33,7 +33,6 @@ struct cca_token *cca_lexer_next(struct cca_lexer*);
 struct cca_token *cca_lexer_parse_number(struct cca_lexer*);
 struct cca_token *cca_lexer_lex(struct cca_lexer*);
 
-void cca_lexer_free_lex(struct cca_token*);
 void cca_lexer_free(struct cca_lexer*);
 
 #endif
